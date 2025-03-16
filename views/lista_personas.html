@@ -1,0 +1,41 @@
+$def with (personas)
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Lista de Personas</h2>
+    <div class="text-end mb-3">
+        <a href="/insertarpersonas" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Nueva Persona
+        </a>
+    </div>
+    $if not personas:
+        <div class="alert alert-info" role="alert">
+            No hay personas registradas en el sistema.
+        </div>
+    $else:
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $for key, persona in personas.items():
+                        <tr>
+                            <td>$persona.get('nombre', 'N/A')</td>
+                            <td>$persona.get('email', 'N/A')</td>
+                            <td>$persona.get('telefono', 'N/A')</td>
+                            <td>
+                                <a href="/detallespersonas/${key}" class="btn btn-info btn-sm">Detalles</a>
+                                <a href="/actualizarpersonas/${key}" class="btn btn-warning btn-sm">Actualizar</a>
+                                <a href="/eliminarpersonas/${key}" class="btn btn-danger btn-sm" 
+                                   onclick="return confirm('¿Está seguro de eliminar esta persona?')">Eliminar</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+</div>

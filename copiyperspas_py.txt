@@ -1,0 +1,34 @@
+import pyrebase
+
+config = {
+  "apiKey": "AIzaSyAHyFssLhGMqdsJPLMvxsdT7adFxDXQa5c",
+  "authDomain": "juan-demobd2.firebaseapp.com",
+  "databaseURL": "https://juan-demobd2-default-rtdb.firebaseio.com",
+  "storageBucket": "juan-demobd2.firebasestorage.app"
+  }
+
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
+
+class Personas:
+    def __init__(self):
+        pass
+    
+    def get_personas(self):
+        try:
+            Personas = db.child("personas").get()
+            response = {
+                "status": "200",
+                "message": "Personas consultadas correctamente",
+                "personas": dict(Personas.val())
+            }
+            return response
+        except Exception as error:
+             print(f"{error.args[0]}")
+             response = 
+    persona = Personas()
+    print(f"{persona.get_personas()}")
+
+
+
+

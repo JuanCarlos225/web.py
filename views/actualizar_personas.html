@@ -1,0 +1,40 @@
+$def with (persona)
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Actualizar Persona</h5>
+        </div>
+        <div class="card-body">
+            $if 'error' in persona:
+                <div class="alert alert-danger">
+                    ${persona['error']}
+                </div>
+            
+            <form method="POST" action="/actualizarpersonas/${persona.get('id', '')}">
+                <div class="form-group mb-3">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" 
+                           value="${persona.get('nombre', '')}" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" 
+                           value="${persona.get('email', '')}" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" 
+                           value="${persona.get('telefono', '')}" required>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <a href="/listapersonas" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+####Instalar el virtual de entorno
+
+pip install virtualenv
+
+python -m venv .venv 
+
+ pip install setuptools
+####
